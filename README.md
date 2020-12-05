@@ -1,2 +1,0 @@
-# Smagliuk.Tursunov.Semenov
-#And
