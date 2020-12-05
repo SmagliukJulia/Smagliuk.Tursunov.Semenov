@@ -73,3 +73,6 @@ def setup_drops(tetris_lookahead):
     tetris_lookahead.pop(0)
     tetris_future = tetris(list_of_tetris[tetris_lookahead[0]])
     return tetris_lookahead, tetris_piece, tetris_future
+
+
+class bottom:
