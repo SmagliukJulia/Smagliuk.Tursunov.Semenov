@@ -41,7 +41,7 @@ def check_and_delete_bottom_blocks_and_increase_count_and_y_speed(bottom_blocks,
                 y_speed += 0.1
     return bottom_blocks, count, y_speed
 
-adef print_initial_message(screen):
+def print_initial_message(screen):
     font = pygame.font.SysFont('TimesNewRoman', blocksize * 3, True, False)
     text5 = font.render("Press Enter", True, BLUE)
     text6 = font.render("to continue", True, BLUE)
