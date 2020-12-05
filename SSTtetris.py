@@ -66,3 +66,10 @@ def draw_background(screen):
         pygame.draw.line(screen, BLACK, [0, i*blocksize], [dimension[1]*blocksize, i*blocksize], 1)
     for i in range(dimension[1]+1):
         pygame.draw.line(screen, BLACK, [i*blocksize, 0], [i*blocksize, dimension[0]*blocksize], 1)
+
+def setup_drops(tetris_lookahead):
+    tetris_lookahead.append(random.randrange(0, different_shapes))
+    tetris_piece = tetris(list_of_tetris[tetris_lookahead[0]])
+    tetris_lookahead.pop(0)
+    tetris_future = tetris(list_of_tetris[tetris_lookahead[0]])
+    return tetris_lookahead, tetris_piece, tetris_future
