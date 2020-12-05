@@ -41,3 +41,28 @@ def check_and_delete_bottom_blocks_and_increase_count_and_y_speed(bottom_blocks,
                 y_speed += 0.1
     return bottom_blocks, count, y_speed
 
+adef print_initial_message(screen):
+    font = pygame.font.SysFont('TimesNewRoman', blocksize * 3, True, False)
+    text5 = font.render("Press Enter", True, BLUE)
+    text6 = font.render("to continue", True, BLUE)
+    screen.blit(text5, [int(50 * (blocksize / 25)), int(150 * (blocksize / 25))])
+    screen.blit(text6, [int(50 * (blocksize / 25)), int(250 * (blocksize / 25))])
+
+def print_scoreboard(screen, count):
+    font = pygame.font.SysFont('TimesNewRoman', blocksize, True, False)
+    text1 = font.render("SCORE", True, BLACK)
+    text2 = font.render(str(count), True, BLACK)
+    text3 = font.render("LEVEL", True, BLACK)
+    text4 = font.render(str(count // 2), True, BLACK)
+    screen.blit(text1, [blocksize * (dimension[1] + 1), blocksize * 1])
+    screen.blit(text2, [blocksize * (dimension[1] + 1), blocksize * 4])
+    screen.blit(text3, [blocksize * (dimension[1] + 1), blocksize * 7])
+    screen.blit(text4, [blocksize * (dimension[1] + 1), blocksize * 10])
+    
+def draw_background(screen):
+    screen.fill(WHITE)
+    pygame.draw.rect(screen, WHITE, [0,0, blocksize*dimension[1],blocksize*dimension[0]])
+    for i in range(dimension[0]+1):
+        pygame.draw.line(screen, BLACK, [0, i*blocksize], [dimension[1]*blocksize, i*blocksize], 1)
+    for i in range(dimension[1]+1):
+        pygame.draw.line(screen, BLACK, [i*blocksize, 0], [i*blocksize, dimension[0]*blocksize], 1)
