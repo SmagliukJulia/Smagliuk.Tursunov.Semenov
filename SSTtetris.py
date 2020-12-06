@@ -84,6 +84,14 @@ class bottom:
             for j in range(dimension[0]):
                 self.blocks[i].append(0)
             self.blocks[i].append(1)
-            
+
+    def draw(self, screen, color):
+        for i in range(dimension[1]):
+            for j in range(dimension[0]):
+                if self.blocks[i][j] != 0:
+                    temp=[i,j,1,1]
+                    temp=[x * blocksize for x in temp]
+                    pygame.draw.rect(screen, color, temp)
+                    
             
 class tetris: 
