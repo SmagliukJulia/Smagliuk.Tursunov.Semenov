@@ -76,3 +76,11 @@ def setup_drops(tetris_lookahead):
 
 
 class bottom:
+    
+    def __init__(self):
+        self.blocks=[]
+        for i in range(dimension[1]):
+            self.blocks.append([])
+            for j in range(dimension[0]):
+                self.blocks[i].append(0)
+            self.blocks[i].append(1)
