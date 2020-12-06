@@ -84,3 +84,6 @@ class bottom:
             for j in range(dimension[0]):
                 self.blocks[i].append(0)
             self.blocks[i].append(1)
+            
+            
+class tetris: 
