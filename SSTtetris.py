@@ -93,5 +93,10 @@ class bottom:
                     temp=[x * blocksize for x in temp]
                     pygame.draw.rect(screen, color, temp)
                     
+    def insert(self,tet):
+        for i in range(4):
+            if tet.shape_position[i][0]>=0 and tet.shape_position[i][1]>=0:
+                self.blocks[tet.shape_position[i][0]][tet.shape_position[i][1]] =1
+                    
             
 class tetris: 
