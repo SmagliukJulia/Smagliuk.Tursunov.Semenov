@@ -97,6 +97,12 @@ class bottom:
         for i in range(4):
             if tet.shape_position[i][0]>=0 and tet.shape_position[i][1]>=0:
                 self.blocks[tet.shape_position[i][0]][tet.shape_position[i][1]] =1
+                
+     def kill(self,i):
+        for j in range(dimension[1]):
+            for k in range(0,i):
+                self.blocks[j][i-k]=self.blocks[j][i-1-k]
+            self.blocks[j][0] = 0
                     
             
 class tetris: 
