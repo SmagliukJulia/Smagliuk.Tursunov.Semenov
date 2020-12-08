@@ -116,3 +116,23 @@ class tetris:
         for i in range(4):
             for j in range(2):
                 self.shape_position[i][j]=self.shape[i][j]+self.pos[j]
+             
+    def rotation(self):
+        temp=copy.deepcopy(self)
+        for i in range(4):
+            temp.shape[i][0]=self.shape[i][1]
+            temp.shape[i][1]=-self.shape[i][0]-1
+        temp.update_shapeposition()
+        return temp
+
+    def position(self, x,y):
+        temp=copy.deepcopy(self)
+        temp.pos=[x,y]
+        temp.update_shapeposition()
+        return temp
+
+    def draw(self, screen, color):
+        for i in range(4):
+            temp=self.shape_position[i]+[1,1]
+            temp=[x * blocksize for x in temp]
+            pygame.draw.rect(screen, color, temp)
