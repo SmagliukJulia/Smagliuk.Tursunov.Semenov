@@ -106,3 +106,13 @@ class bottom:
                     
             
 class tetris: 
+    
+    def init(self, shape):
+        self.shape=shape
+        self.pos=[0,0]
+        self.shape_position=copy.deepcopy(self.shape)
+
+    def  update_shapeposition(self):
+        for i in range(4):
+            for j in range(2):
+                self.shape_position[i][j]=self.shape[i][j]+self.pos[j]
