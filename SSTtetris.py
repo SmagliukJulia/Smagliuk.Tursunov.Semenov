@@ -136,3 +136,27 @@ class tetris:
             temp=self.shape_position[i]+[1,1]
             temp=[x * blocksize for x in temp]
             pygame.draw.rect(screen, color, temp)
+
+    def future_draw(self,screen,color,coordinates):
+        for i in range(4):
+            temp=[self.shape[i][0]+coordinates[0],self.shape[i][1]+coordinates[1]]
+            temp=temp+[1,1]
+            temp=[x * blocksize for x in temp]
+            pygame.draw.rect(screen, color, temp)
+
+
+    def collision_R(self,x,y,bottom_stack):
+        temp=self.position(x,y)
+        index=0
+        for i in range(4):
+            if temp.shape_position[i][0]>=dimension[1]:
+                index=1
+                break
+            elif temp.shape_position[i][0]>=0 and temp.shape_position[i][1]>=0:
+                if bottom_stack.blocks[temp.shape_position[i][0]][temp.shape_position[i][1]] == 1:
+                    index = 1
+                    break
+        if index==1:
+            return True
+        else:
+            return False
