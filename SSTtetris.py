@@ -188,3 +188,35 @@ class tetris:
             return True
         else:
             return False
+        
+    def input_treatment(event,done, dead,tetris_piece,x_coord, y_coord, y_coord_for_showing,  x_speed, y_speed, bottom_blocks):
+    if event.type == pygame.QUIT:  
+        done = True  
+        dead = True
+    elif event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_LEFT:
+            x_speed = -1
+        elif event.key == pygame.K_RIGHT:
+            x_speed = 1
+        elif event.key == pygame.K_UP:
+            temp = tetris_piece.rotation()
+            if not temp.collision_R(x_coord, y_coord_for_showing, bottom_blocks) and not temp.collision_L(x_coord, y_coord_for_showing, bottom_blocks):
+                tetris_piece = tetris_piece.rotation()
+        elif event.key == pygame.K_SPACE:
+            for i in range(y_coord_for_showing, dimension[0]):
+                if tetris_piece.collision_bottom_stack(x_coord, i, bottom_blocks):
+                    y_coord = i
+                    break
+                else:
+                    y_coord = dimension[0]
+        elif event.key == pygame.K_DOWN:
+            y_speed += 1
+
+    elif event.type == pygame.KEYUP:
+        if event.key == pygame.K_LEFT:
+            x_speed = 0
+        elif event.key == pygame.K_RIGHT:
+            x_speed = 0
+        elif event.key == pygame.K_DOWN:
+            y_speed -= 1
+    return done , dead, tetris_piece,y_coord,x_speed, y_speed
