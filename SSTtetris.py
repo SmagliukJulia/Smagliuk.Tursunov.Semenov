@@ -160,3 +160,19 @@ class tetris:
             return True
         else:
             return False
+
+    def collision_L(self,x,y,bottom_stack):
+        temp=self.position(x,y)
+        index=0
+        for i in range(4):
+            if temp.shape_position[i][0]<=-1:
+                index=1
+                break
+            elif temp.shape_position[i][0] >= 0 and temp.shape_position[i][1] >= 0:
+                if bottom_stack.blocks[temp.shape_position[i][0]][temp.shape_position[i][1]] == 1:
+                    index = 1
+                    break
+        if index==1:
+            return True
+        else:
+            return False
