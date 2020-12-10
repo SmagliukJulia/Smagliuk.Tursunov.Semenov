@@ -220,3 +220,13 @@ class tetris:
         elif event.key == pygame.K_DOWN:
             y_speed -= 1
     return done , dead, tetris_piece,y_coord,x_speed, y_speed
+
+    def update_x_and_y_coordinates_after_checking_collision(tetris_piece,x_coord, y_coord, y_coord_for_showing, x_speed, y_speed, bottom_blocks):
+        x_coord = x_coord + x_speed
+        while tetris_piece.collision_R(x_coord, y_coord_for_showing, bottom_blocks) and x_speed == 1:
+            x_coord = x_coord - 1
+        while tetris_piece.collision_L(x_coord, y_coord_for_showing, bottom_blocks) and x_speed == -1:
+            x_coord = x_coord + 1
+        y_coord = y_coord + y_speed
+        y_coord_for_showing = int(y_coord // 1)
+        return x_coord, y_coord, y_coord_for_showing
