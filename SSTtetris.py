@@ -230,3 +230,18 @@ class tetris:
         y_coord = y_coord + y_speed
         y_coord_for_showing = int(y_coord // 1)
         return x_coord, y_coord, y_coord_for_showing
+    
+def main():
+
+    pygame.init()
+
+    screen = pygame.display.set_mode(size)
+    pygame.display.set_caption("Tetris")
+    clock = pygame.time.Clock()
+    pygame.mouse.set_visible(0)
+
+    done = False
+    while not done:
+        print_initial_message(screen)
+        pygame.display.flip()
+        clock.tick(1)
