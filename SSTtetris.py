@@ -245,3 +245,10 @@ def main():
         print_initial_message(screen)
         pygame.display.flip()
         clock.tick(1)
+
+        for event in pygame.event.get():  
+            if event.type == pygame.QUIT:  
+                done = True  
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_RETURN:
+                    dead = False        
