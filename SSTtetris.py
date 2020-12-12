@@ -276,3 +276,19 @@ def main():
                                 x_coord, y_coord, y_coord_for_showing = set_to_the_beginning()
                             else:
                                 dead=True
+
+                        draw_background(screen)
+                        tetris_piece= tetris_piece.position(x_coord,y_coord_for_showing)
+                        tetris_piece.draw(screen, BLUE)
+                        bottom_blocks.draw(screen, GREEN)
+                        bottom_blocks, count, y_speed=check_and_delete_bottom_blocks_and_increase_count_and_y_speed(bottom_blocks, count, y_speed)
+                        bottom_blocks.draw(screen, GREEN)
+                        tetris_future.future_draw(screen, BLUE, [dimension[1]+3, 13])
+                        print_scoreboard(screen, count)
+
+                        pygame.display.flip()
+                        clock.tick(20)
+    pygame.quit()
+
+if __name__ == "__main__":
+    main()
