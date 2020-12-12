@@ -252,3 +252,27 @@ def main():
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RETURN:
                     dead = False        
+
+                    x_speed, y_speed = 0, 0.1
+                    x_coord, y_coord, y_coord_for_showing = set_to_the_beginning()
+
+                    tetris_lookahead=[random.randrange(0, different_shapes)]
+                    tetris_lookahead, tetris_piece, tetris_future=setup_drops(tetris_lookahead)
+
+                    bottom_blocks = bottom()
+                    count = 0
+
+                    while not dead:
+                        for event in pygame.event.get():  
+                            done, dead, tetris_piece, y_coord, x_speed, y_speed=input_treatment(event,done, dead,tetris_piece,x_coord, y_coord, y_coord_for_showing,  x_speed, y_speed, bottom_blocks)
+
+                        x_coord, y_coord, y_coord_for_showing= update_x_and_y_coordinates_after_checking_collision(tetris_piece,x_coord,y_coord,y_coord_for_showing,x_speed,y_speed,bottom_blocks)
+
+                        if tetris_piece.collision_bottom_stack(x_coord, y_coord_for_showing, bottom_blocks):
+                            if y_coord_for_showing!=0:
+                                tetris_piece = tetris_piece.position(x_coord, y_coord_for_showing-1)
+                                bottom_blocks.insert(tetris_piece)
+                                tetris_lookahead, tetris_piece, tetris_future = setup_drops(tetris_lookahead)
+                                x_coord, y_coord, y_coord_for_showing = set_to_the_beginning()
+                            else:
+                                dead=True
